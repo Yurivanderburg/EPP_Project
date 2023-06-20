@@ -1,3 +1,5 @@
+import ctypes
+
 from MyAnalysis2 import MyAnalysis
 from Plotter2 import plotVar, plotShapes, getSigHisto, getBkgHisto, getHisto
 import numpy as np
@@ -9,8 +11,8 @@ import pandas as pd
 # Eta_cuts = [[0,0.4],[0.4,0.8],[0.8,1.5],[1.5,1.8],[1.8,2.1]] IF CHANGING THE ETA CUT -> ALSO CHANGE HISTO X-LIM
 cut_MET = 20
 cut_muonPT = 30
-cut_Eta_low = 1.8
-cut_Eta_high = 2.1
+cut_Eta_low = 0
+cut_Eta_high = 0.4
 cross_sec_th = [173.60, 11.7]
 W_mass_th = [80.4, 0.01]
 run_process = True
@@ -28,6 +30,14 @@ def calc_score(sig, bgr):
         sig / (2 * (sig + bgr) ** (3 / 2)) ** 2 * bgr
     )
     return [score, score_err]
+
+
+def calc_integral_and_error(histo):
+    minBin = histo.GetXaxis().GetFirst()
+    maxBin = histo.GetXaxis().GetLast()
+    nDataErr = ctypes.c_double()
+    nData = histo.IntegralAndError(minBin, maxBin, nDataErr)
+    return nData, nDataErr.value
 
 
 def make_fits(charge=None, save_plots=False):
@@ -80,31 +90,31 @@ def make_fits(charge=None, save_plots=False):
     fit_bkg_sig.SetNpx(1000)
     W_mass_data.Fit(fit_bkg_sig)
 
-    # Total fit: Signal subplot
-    fit_bkg_sig_subplot_signal = ROOT.TF1("fit_sig", "[0]*TMath::Gaus(x,[1],[2]) + [3]*TMath::Gaus(x,[4],[5])", 0, 150)
+    # Total fit: Signal subplot -> abbreviated as fbss_sig
+    fbss_sig = ROOT.TF1("fit_sig", "[0]*TMath::Gaus(x,[1],[2]) + [3]*TMath::Gaus(x,[4],[5])", 0, 150)
     for i in range(6):
-        fit_bkg_sig_subplot_signal.SetParameter(i, fit_bkg_sig.GetParameter(i + 3))
-    fit_bkg_sig_subplot_signal.SetLineColor(1)
+        fbss_sig.SetParameter(i, fit_bkg_sig.GetParameter(i + 3))
+    fbss_sig.SetLineColor(1)
 
-    # Total fit: Background subplot
-    fit_bkg_sig_subplot_background = ROOT.TF1("fit_bkg", "[0]*(TMath::Erf((x-[1])/[2])+1.)", 0, 150)
+    # Total fit: Background subplot -> abbreviated as fbss_bkg
+    fbss_bkg = ROOT.TF1("fit_bkg", "[0]*(TMath::Erf((x-[1])/[2])+1.)", 0, 150)
     for i in range(3):
-        fit_bkg_sig_subplot_background.SetParameter(i, fit_bkg_sig.GetParameter(i))
-    fit_bkg_sig_subplot_background.SetLineColor(2)
+        fbss_bkg.SetParameter(i, fit_bkg_sig.GetParameter(i))
+    fbss_bkg.SetLineColor(2)
 
     # Create legend
     leg = ROOT.TLegend(0.6, 0.8, 0.97, 0.97)
     leg.SetNColumns(2)
     leg.AddEntry(W_mass_data, 'data')
     leg.AddEntry(fit_bkg_sig, 'sig. + backgr.')
-    leg.AddEntry(fit_bkg_sig_subplot_signal, 'signal')
-    leg.AddEntry(fit_bkg_sig_subplot_background, 'background')
+    leg.AddEntry(fbss_sig, 'signal')
+    leg.AddEntry(fbss_bkg, 'background')
 
     # Draw everything
     W_mass_data.Draw("same")
     fit_bkg_sig.Draw("same")
-    fit_bkg_sig_subplot_signal.Draw("same")
-    fit_bkg_sig_subplot_background.Draw("same")
+    fbss_sig.Draw("same")
+    fbss_bkg.Draw("same")
     leg.Draw()
     c3.Update()
 
@@ -112,9 +122,11 @@ def make_fits(charge=None, save_plots=False):
         c3.SaveAs(f"sig_fit_bkg_{charge}_{cut_Eta_low}.pdf", "pdf")
 
     # Calculate N_mass
-    # N_mass: Y-Coordinate of the Signal-subplot;
-    # N_mass_error: Error on the fitted amplitude of the Gaussian.
-    N_mass = [fit_bkg_sig_subplot_signal.Eval(x=W_mass_th[0]), fit_bkg_sig.GetParError(3)]
+    # N_mass is determined from the signal subplot in the total fit
+    # N_mass_err is determined from IntegralAndError from dataset (because TF1.IntegralError did not work...)
+    N_mass_ = fbss_sig.Integral(fbss_sig.GetXmin(), fbss_sig.GetXmax())
+    N_mass_err_ = calc_integral_and_error(W_mass_data)[1]
+    N_mass = [N_mass_, N_mass_err_]
     print("N_mass: ", N_mass)
 
     return N_mass
@@ -129,7 +141,7 @@ def calc_asymmetry(N_pos, N_neg):
     A_err = np.sqrt(
         (((2 * N_neg[0]) / sum ** 2) * N_pos[1]) ** 2 + (((2 * N_pos[0]) / sum ** 2) * N_neg[1]) ** 2
     )
-    return [A, A_err]
+    return [A*100, A_err*100]
 
 
 # ---------------------- Create Histograms and Plots ----------------------
