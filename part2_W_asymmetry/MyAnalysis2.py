@@ -73,11 +73,11 @@ class MyAnalysis(object):
         h_NBtag.SetXTitle("Number of B tagged jets")
         self.histograms["NBtag"] = h_NBtag
 
-        h_MuonpEta = ROOT.TH1F("Muon_eta_p","Muon+ eta", 500, 1.8, 2.1)
+        h_MuonpEta = ROOT.TH1F("Muon_eta_p","Muon+ eta", 500, 0., 0.4)
         h_MuonpEta.SetXTitle("Muon+ eta")
         self.histograms["Muon_eta_p"] = h_MuonpEta
 
-        h_MuonmEta = ROOT.TH1F("Muon_eta_n","Muon- eta", 500, 1.8, 2.1)
+        h_MuonmEta = ROOT.TH1F("Muon_eta_n","Muon- eta", 500, 0., 0.4)
         h_MuonmEta.SetXTitle("Muon- eta")
         self.histograms["Muon_eta_n"] = h_MuonmEta
 
