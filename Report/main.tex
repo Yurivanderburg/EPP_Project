@@ -77,7 +77,11 @@ In this short exercise, a dataset from the CMS experiment, as well as a Monte Ca
 %\tableofcontents
 
 \section{\label{sec:introduction}Introduction}
+<<<<<<< HEAD
 With its mass of 173 GeV/c$^2$, the top quark is the heaviest elementary particle. Its short lifetime of about $5 \cdot 10^{-25}$s makes it possible to study the top quark in great detail, as it does not hadronize \cite{workman_review_2022}.
+=======
+With its mass of 173 GeV/c$^2$, the top quark is the heaviest elementary particle. Its long lifetime of about $5 \cdot 10^{-25}$s makes it possible to study the top quark in great detail \cite{workman_review_2022}.
+>>>>>>> main
 The semi-leptonic decay of $t \bar t$ consists of the decay mode $t \rightarrow bW$, where one of the $W$ bosons decays leptonically $W \rightarrow \mu \nu$ and the other decays hadronically $W \rightarrow q \bar q$ \cite{cms_collaboration_measurement_2018}. The total decay is $t \bar t \rightarrow \mu \nu b \bar b q \bar q$. \\
 The cross-section of this decay can be calculated as in equation (\ref{eq:cross_sec}):
 
@@ -85,7 +89,11 @@ The cross-section of this decay can be calculated as in equation (\ref{eq:cross_
     \sigma = \frac{N}{L \cdot \epsilon \cdot A}
 \end{equation}
 
+<<<<<<< HEAD
 Here, $N$ is the total number of events, $L$ the luminosity, $\epsilon$ the trigger efficiency, and $A$ the acceptance, which also includes the branching ratio.\\
+=======
+Here, $N$ is the total number of events, $L$ the luminosity, $\epsilon$ the trigger efficiency, and $A$ the acceptance. \\
+>>>>>>> main
 In this process we expect a charge asymmetry of the W-boson, because the Large Hadron Collider at CERN is a pp-collider. The W-boson charge asymmetry is very difficult to measure, therefore we measure the lepton charge asymmetry ($W \rightarrow \mu \nu$) and identify the lepton charge with the W charge asymmetry $\mathcal{A}$. It is given by equation \ref{eq:charge_asym}, where $N_{\pm}$ indicates the number of events with a $\mu^{\pm}$. 
 
 
@@ -108,7 +116,11 @@ The event selection was conducted by optimizing the score, defined as in equatio
 
 
 \subsection{Cut selection}
+<<<<<<< HEAD
 In a first step different cuts were selected. This was done qualitatively by looking at different parameter distributions. The cuts used including its numerical value can be found in table \ref{tab:optimal_params}. With exception of the number of isolated muon, they are lower limits, hence events with at least 4 total jets were selected. 
+=======
+In a first step different cuts were selected. This was done qualitatively by looking at different parameter distributions. The cuts used including its numerical value can be found in table \ref{tab:optimal_params}. With exception of the number of isolated muon, they are lower limits. \\
+>>>>>>> main
 These parameters are justified physically because in the desired events we do expect an isolated muon with its corresponding neutrino, which appears as missing transverse energy (MET). The other W-boson decays into an $q \bar q$ pair, corresponding to two jets, as they have relatively high energy. There should also be at least one b-jet present.  
 
 \begin{table}[b]
@@ -124,13 +136,21 @@ These parameters are justified physically because in the desired events we do ex
     Isolated muons       &  1 \\
     \hline
     \end{tabular}
+<<<<<<< HEAD
     \caption{Parameters that yield the highest score $\varsigma$. With exception of the number of isolated muons, parameters have to be greater of equal to the cut value. }
+=======
+    \caption{Parameters that yield the highest score $\varsigma$. }
+>>>>>>> main
     \label{tab:optimal_params}
 \end{table}
 
 
 \subsection{Cut optimization}
+<<<<<<< HEAD
 In a second step, the selected cuts were systematically scanned over a wide range to find the highest score $\varrho$, which was obtained with the parameters indicated in table \ref{tab:optimal_params}. All the p
+=======
+In a second step, the selected cuts were systematically scanned over a wide range to find the highest score $\varrho$, which was obtained with the parameters indicated in table \ref{tab:optimal_params}. 
+>>>>>>> main
 Figure \ref{fig:cut_param} show the effect of the different parameters on the score. We can see that the score decreases significantly when the cuts are very strict because we cut off a large portion of the signal as well. 
 Figure \ref{fig:muon_pt} shows the transverse momentum of the muons. The main background comes from single-top events. 
 
@@ -142,8 +162,13 @@ Figure \ref{fig:muon_pt} shows the transverse momentum of the muons. The main ba
 \end{figure}
 
 \section{Cross section calculation}
+<<<<<<< HEAD
 The selected cuts are then applied to the dataset. From the MC simulation, we do expect $(18 \pm 4)$ background events. When this is subtracted from the dataset, we do get a total of $(146.6 \pm 8.5)$ observed events. This corresponds to a detector acceptance (172 events) of $(1.8 \pm 0.1)$\%. Furthermore, we assume a detector efficiency of $(87 \pm 5)$\% and a systematic uncertainty of 10\%. 
 The total cross-section for this event is $(190.6~\pm~26.0$~(stat.)~$\pm~15.6$~(sys.)$)$~pb, achieving the theoretical cross-section of $(173.6 \pm 11.7)$~pb. This includes a 10\% uncertainty on the luminosity and the MC statistical uncertainty on the background, which follows the Poisson error $\sqrt{N}$. The cross-section is calculated using equation (\ref{eq:cross_sec}), the error using equation (\ref{eq:cross_sec_err}).
+=======
+The selected cuts are then applied to the dataset. From the MC simulation, we do expect $(18 \pm 4)$ background events. When this is subtracted from the dataset, we do get a total of $(146.6 \pm 8.5)$ observed events. This corresponds to a detector acceptance (172 events) of $(2.2 \pm 0.1)$~\%. Furthermore, we assume a detector efficiency of $(87 \pm 5)\%$ and a systematic uncertainty of 10\%. 
+The total cross-section for this event is $(155.6~\pm~21.0$~(stat.)~$\pm~15.6$~(sys.)$)$~pb, achieving the theoretical cross-section of $(173.6 \pm 11.7)$~pb. This includes a 10\% uncertainty on the luminosity and the MC statistical uncertainty on the background, which follows the Poisson error $\sqrt{N}$. The cross-section is calculated using equation (\ref{eq:cross_sec}), the error using equation (\ref{eq:cross_sec_err}).
+>>>>>>> main
 
 
     
@@ -190,8 +215,13 @@ Again, $\alpha$ and $\beta$, as well as both $\mu_i$ and $\sigma_i$ are fit para
 
 
 
+<<<<<<< HEAD
 The final fit, consisting of the sum of two Gaussians and an error function, was done on the CMS data with the parameters obtained from the previous fits: Parameters $b$ and $c$ from the background fit were fixed, while the amplitude $a$ on the background, and all parameters of the Gaussians were used as starting parameters. The number of events was then estimated as the integral over the double Gaussian function in the total fit, shown in figure \ref{fig:W_asym_c} and \ref{fig:W_asym_d} as the black line (signal). The uncertainty on the number of events was estimated from the error on the integral of to the CMS data. 
 The asymmetry and its uncertainty were then calculated using equations (\ref{eq:charge_asym}) and (\ref{eq:charge_asym_err}). The result for $\eta < 0.4$ is then  $(12.0 \pm 0.4)$ \%. Table \ref{tab:asymmetry_etas} displays the different calculations for the charge asymmetry for different ranges of $\eta$, figure \ref{fig:A_eta} shows this graphically. 
+=======
+The final fit, consisting of the sum of two Gaussians and an error function, was done on the CMS data with the parameters obtained from the previous fits: Parameters $b$ and $c$ from the background fit were fixed, while the amplitude $a$ on the background, and all parameters of the Gaussians were used as starting parameters. The number of events was then estimated with the final fit function, evaluated as the value double Gaussian at the W-boson mass (80.4 GeV). 
+The asymmetry and its unceratinty were then calculated using equations (\ref{eq:charge_asym}) and (\ref{eq:charge_asym_err}). The result for $\eta < 0.4$ is then $(11.3 \pm 0.9)$ \%. Table \ref{tab:asymmetry_etas} displays the different calculations for the charge asymmetry for different ranges of $\eta$, figure \ref{fig:A_eta} shows this graphically. 
+>>>>>>> main
 The determined W charge asymmetries are very similar to the literature \cite{cms_collaboration_measurements_2020, saha_measurement_2013}.
 
 \begin{table}
@@ -200,11 +230,19 @@ The determined W charge asymmetries are very similar to the literature \cite{cms
     \hline
     Range of $\eta$     & W Charge asymmetry [\%] \\
     \hline
+<<<<<<< HEAD
     $[0.0, 0.4]$          & $(12.0 \pm 0.4)$ \\
     $[0.4, 0.8]$          & $(13.4 \pm 0.4)$ \\
     $[0.8, 1.5]$          & $(15.8 \pm 0.3)$ \\
     $[1.5, 1.8]$          & $(20.8 \pm 0.5)$ \\
     $[1.8, 2.1]$          & $(22.5 \pm 0.6)$ \\
+=======
+    $[0.0, 0.4]$          & $(11.3 \pm 0.9)$ \\
+    $[0.4, 0.8]$          & $(12.2 \pm 0.9)$ \\
+    $[0.8, 1.5]$          & $(15.0 \pm 0.7)$ \\
+    $[1.5, 1.8]$          & $(19.2 \pm 1.1)$ \\
+    $[1.8, 2.1]$          & $(20.6 \pm 1.2)$ \\
+>>>>>>> main
     \hline
     \end{tabular}
     \caption{Ranges of $\eta$ and the corresponding W charge asymmetry.  }
@@ -254,28 +292,44 @@ The determined W charge asymmetries are very similar to the literature \cite{cms
             \centering
             \includegraphics[width=\textwidth]{Plots/part2/W_mass_p.pdf}
             \caption{$W^+$-boson mass [GeV] distribution of the selected events.}    
+<<<<<<< HEAD
             \label{fig:W_asym_a}
+=======
+            \label{fig:mean and std of net14}
+>>>>>>> main
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.475\textwidth}  
             \centering 
             \includegraphics[width=\textwidth]{Plots/part2/W_mass_n.pdf}
             \caption{$W^-$-boson mass [GeV] distribution of the selected events.}    
+<<<<<<< HEAD
             \label{fig:W_asym_b}
+=======
+            \label{fig:mean and std of net24}
+>>>>>>> main
         \end{subfigure}
         \vskip\baselineskip
         \begin{subfigure}[b]{0.475\textwidth}   
             \centering 
             \includegraphics[width=\textwidth]{Plots/part2/sig_fit_bkg_positive_0.pdf}
             \caption{Total fit on the events containing a $\mu^+$, including the contributions of the MC estimated background and signal.}   
+<<<<<<< HEAD
             \label{fig:W_asym_c}
+=======
+            \label{fig:mean and std of net34}
+>>>>>>> main
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.475\textwidth}   
             \centering 
             \includegraphics[width=\textwidth]{Plots/part2/sig_fit_bkg_negative_0.pdf}
             \caption{Total fit on the events containing a $\mu^-$, including the contributions of the MC estimated background and signal.}   
+<<<<<<< HEAD
             \label{fig:W_asym_d}
+=======
+            \label{fig:mean and std of net44}
+>>>>>>> main
         \end{subfigure}
         \caption{Plot results of the W-boson charge asymmetry for a pseudorapidity $< 0.4$ The left row indicates events with a positive muon and the right row events with a negative muon. The upper figures show that the event selection was very accurate, as the main background comes from Drell-Yan processes. The single bar indicating a high QCD background is most likely an artifact, as the histograms are weighted.}
         \label{fig:W_asym}
@@ -286,9 +340,15 @@ The determined W charge asymmetries are very similar to the literature \cite{cms
 \section{Results and Outlook}
 
 The total cross-section for the event $t \bar t \rightarrow \mu \nu b \bar b q \bar q$ of 
+<<<<<<< HEAD
 $(190.6 \, \pm \, 26.0$ (stat.) $\pm \, 15.6$ (sys.)$)$ pb agrees with the literature value of $(173.6 \, \pm \, 11.7)$ pb \cite{workman_review_2022}. This measurement was not very accurate, but fairly precise. The cut selection can be improved, as relatively few events passed the selection criteria. I would have liked to select events with at least two b-jets, but then there would have been even less events left.
 On the other hand, if the cuts are less strict, there would be more background events passing the selection. For more precise and accurate results, one should use a more systematic approach for selecting the cuts. \\
 The W-boson charge asymmetry of  $(12.0 \pm 0.4)$ \% for a $\eta < 0.4$ agrees well with the literature, as does the general trend of larger $\mathcal{A}$ with increasing $\eta$. The MC background does seem to have some signal at 60 GeV in it. Further investigation would be required to explain this behaviour. 
+=======
+$(155.6 \, \pm \, 21.0$ (stat.) $\pm \, 15.6$ (sys.)$)$ pb agrees with the literature value of $(173.6 \, \pm \, 11.7)$ pb \cite{workman_review_2022}. This measurement was not very accurate, but fairly precise. The cut selection can be improved, as relatively few events passed the selection criteria. I would have liked to select events with at least two b-jets, but then there would have been even less events left.
+On the other hand, if the cuts are less strict, there would be more background events passing the selection. For more precise and accurate results, one should use a more systematic approach for selecting the cuts. \\
+The W-boson charge asymmetry of $(11.3 \pm 0.9)$ \% for a $\eta < 0.4$ agrees well with the literature, as does the general trend of larger $\mathcal{A}$ with increasing $\eta$. The MC background does seem to have some signal at 60 GeV in it. Further investigation would be required to explain this behaviour. 
+>>>>>>> main
 
 
 
@@ -331,7 +391,11 @@ The uncertainty on the charge asymmetry is given by the following equation:
     } 
 \end{multline}
 
+<<<<<<< HEAD
 Here, $N_{+/-}$ is the number of events including a $\mu^{+/-}$, as indicated in section \ref{sec:introduction}, with uncertainty $\sigma_{N_{+/-}}$.
+=======
+Here, $N_{+/-}$ is the number of events including a $\mu^{+/-}$, as indicated in section \ref{sec:introduction}, with uncertainty $\sigma_{N_{+/-}}$
+>>>>>>> main
 
 
 \bibliographystyle{apsrev4-1}
